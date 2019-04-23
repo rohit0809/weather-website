@@ -20,7 +20,7 @@ yarg.command({
         }
     },
     handler(argv){
-        console.log('Adding the note....')
+        console.log('Adding the note.....')
         notes.addNote(argv.title,argv.body)
     }
 })
