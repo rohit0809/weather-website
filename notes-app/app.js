@@ -2,7 +2,7 @@ const ck = require('chalk')
 const yarg = require('yargs')
 const notes =  require('./notes.js')
 
-console.log(ck.red.bold('Error!'))
+//console.log(ck.red.bold('Error!'))
 
 yarg.command({
     command: 'add',
@@ -20,7 +20,7 @@ yarg.command({
         }
     },
     handler(argv){
-        console.log('Adding the note....')
+        console.log('Adding the note.....')
         notes.addNote(argv.title,argv.body)
     }
 })
@@ -49,16 +49,42 @@ yarg.command({
 yarg.command({
     command: 'list',
     describe: 'Listing the notes',
+    builder: {
+        title: {
+            describe: 'Note Title',
+            demandOption: false,
+            type: 'string'
+        },
+        body: {
+            describe: 'Note Body',
+            demandOption: false,
+            type: 'string'
+        }
+    },
     handler(){
         console.log('Listing the notes....')
+        notes.listNote()
     }
 })
 
 yarg.command({
     command: 'read',
     describe: 'Reading a note',
-    handler(){
-        console.log('Reading the notes....')
+    builder: {
+        title: {
+            describe: 'Note Title',
+            demandOption: true,
+            type: 'string'
+        },
+        body: {
+            describe: 'Note Body',
+            demandOption: false,
+            type: 'string'
+        }
+    },
+    handler(argv){
+        console.log('Reading the note....')
+        notes.readNote(argv.title)
     }
 })
 
