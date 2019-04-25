@@ -12,6 +12,11 @@ request({url:url, json:true}, (error, response) => {
 const geourl = "https://api.mapbox.com/geocoding/v5/mapbox.places/Los%20Angeles.json?access_token=pk.eyJ1Ijoicm9oaXQwODA5IiwiYSI6ImNqdXgydmY0aDA1Z2o0NHBncDk2ZXpzZHIifQ.gTefkGtC2RSDT21bIpaYfw&limit=1"
 
 request({url:geourl, json:true}, (error, response) => {
-    console.log('Lattitude is '+response.body.features[0].center[1]+' and Longitude is '+response.body.features[0].center[0])
+    if(error){
+        console.log('Error!!!Unable to connect to api!!')
+    }
+    else{
+        console.log('Lattitude is '+response.body.features[0].center[1]+' and Longitude is '+response.body.features[0].center[0])
+    }
 })
 
