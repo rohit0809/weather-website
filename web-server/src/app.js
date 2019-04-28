@@ -4,7 +4,9 @@ const path = require('path')
 const app = express()
 const publicDirectory = path.join(__dirname, '../public')
 
+app.set('view engine', 'hbs')
 app.use(express.static(publicDirectory))
+
 
 app.get('/weather',(req,res) => {
     res.send([{
