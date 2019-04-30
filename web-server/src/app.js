@@ -41,13 +41,16 @@ app.get('/help',(req,res) => {
 
 
 app.get('/weather',(req,res) => {
-    res.send([{
-        location: 'Kolkata',
-        forecast: '50 degree'
-    },{
-        location: 'Patna',
-        forecast: '15 degree'
-    }])
+    if(!req.query.address){
+        return res.send({
+            error: 'You must provide a valid address!!'
+        })
+    }
+
+    res.send({
+        forecast: 'It is snowy weather!!',
+        location: req.query.address 
+    })
 })
 
 app.get('/help/*', (req,res) => {
@@ -55,6 +58,18 @@ app.get('/help/*', (req,res) => {
         title: '404',
         name: 'Rohit Anand',
         errorMessage: 'Help article not found!!!'
+    })
+})
+
+app.get('/product', (req,res) => {
+    if(!req.query.search){
+        return res.send({
+            error: 'You must provide a search term'
+        })
+    }
+
+    res.send({
+        products: []
     })
 })
 
