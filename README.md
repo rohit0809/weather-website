@@ -1,2 +1,2 @@
 # NodeProjects
-Learning Node.js and developing different applications.
+It is a Weather Application build on Node js. Uses geocode and forecast api to get weather of particular search location.
